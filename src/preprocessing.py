@@ -4,35 +4,35 @@ import numpy as np
 
 def to_grayscale(image):
     """
-    Convierte la imagen a escala de grises.
+    Convierte la imagen a escala de grises
     """
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
 def resize_image(image, width, height):
     """
-    Redimensiona la imagen al tamaño indicado.
+    Redimensiona la imagen al tamaño indicado
     """
     return cv2.resize(image, (width, height), interpolation=cv2.INTER_AREA)
 
 
 def apply_blur(image, kernel_size=5):
     """
-    Aplica filtro Gaussiano de suavizado.
+    Aplica filtro Gaussiano de suavizado
     """
     return cv2.GaussianBlur(image, (kernel_size, kernel_size), 0)
 
 
 def adjust_brightness_contrast(image, alpha=1.0, beta=0):
     """
-    Ajusta brillo (beta) y contraste (alpha).
+    Ajusta brillo (beta) y contraste (alpha)
     """
     return cv2.convertScaleAbs(image, alpha=alpha, beta=beta)
 
 
 def apply_threshold(image, thresh_value=127):
     """
-    Aplica umbralización binaria.
+    Aplica umbralización binaria
     """
     if len(image.shape) != 2:
         raise ValueError("apply_threshold requiere una imagen en escala de grises (1 canal).")
@@ -49,7 +49,7 @@ def apply_threshold(image, thresh_value=127):
 
 def detect_edges(image, low=50, high=150):
     """
-    Detecta bordes con Canny.
+    Detecta bordes con Canny
     """
     if len(image.shape) > 2:
         image = to_grayscale(image)
@@ -59,7 +59,7 @@ def detect_edges(image, low=50, high=150):
 
 def full_pipeline(image, target_width=224, target_height=224):
     """
-    Pipeline completo de preprocesamiento.
+    Pipeline completo de preprocesamiento
     """
 
     resized = resize_image(image, target_width, target_height)
